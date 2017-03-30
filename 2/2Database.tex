@@ -1,0 +1,103 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{graphicx}
+\usepackage{floatrow}
+%opening
+\title{数据库系统原理 \\ 作业 2}
+\author{软件42 欧阳鹏程 2141601030}
+
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+	\item[2.3] 为什么要对关系模型加以完整性规则的限制？关系模型的完整性约束具体包括哪些内容？
+	
+	\item[2.5] 试对笛卡儿积、$\theta$连接、等值连接、自然连接等关系运算进行比较。
+	
+	\item[2.6] 试将$\cup, -, \bowtie, \sigma, \Pi$等运算转换为等价的元组关系演算形式，为什么要对关系演算表达式加以安全性约束？
+	
+	\item[2.7] 
+	设有下列关系：
+	\begin{table}[H]
+		\ttabbox{\caption{\textit{R, S, T}关系}}{
+			\centering
+			\begin{minipage}{0.35\textwidth}
+				
+				\begin{tabular}{|c|c|c|c|c|}\hline
+					\textit{R} & \textit{A} & \textit{B} & \textit{C} & \textit{D}\\\hline					
+					 & $a_{1}$ & $b_{1}$ & $c_{1}$ & $d_{1}$\\\hline	
+					 			
+					 & $a_{1}$ & $b_{1}$ & $c_{1}$ & $d_{2}$\\\hline	
+					 					 
+					 & $a_{2}$ & $b_{2}$ & $c_{2}$ & $d_{1}$\\\hline	
+					 					 
+					 & $a_{2}$ & $b_{3}$ & $c_{2}$ & $d_{2}$\\\hline	
+					 					 
+					 & $a_{2}$ & $b_{1}$ & $c_{2}$ & $d_{3}$\\\hline	
+					 					 
+					 & $a_{3}$ & $b_{2}$ & $c_{2}$ & $d_{1}$\\\hline	
+					 					 
+					 & $a_{3}$ & $b_{2}$ & $c_{3}$ & $d_{2}$\\\hline	
+					 					 
+					 & $a_{4}$ & $b_{3}$ & $c_{2}$ & $d_{1}$\\\hline	
+					 					 
+					 & $a_{4}$ & $b_{3}$ & $c_{2}$ & $d_{3}$\\\hline	
+					 					 
+					 & $a_{4}$ & $b_{1}$ & $c_{2}$ & $d_{4}$\\\hline	
+					 				 
+					 & $a_{4}$ & $b_{4}$ & $c_{2}$ & $d_{2}$\\\hline	
+					  
+				\end{tabular}
+			\end{minipage}
+			\hfil
+			\begin{minipage}{0.35\textwidth}
+				
+				\begin{tabular}{|c|c|c|c|}       \hline
+					\textit{S} & \textit{D} & \textit{E} & \textit{F}     \\\hline
+					~ & $d_{1}$ & $e_{2}$ & $f_{1}$ \\\hline
+					
+					~ & $d_{2}$ & $e_{1}$ & $f_{2}$ \\\hline
+					
+					~ & $d_{2}$ & $e_{2}$ & $f_{3}$ \\\hline
+					
+					~ & $d_{3}$ & $e_{3}$ & $f_{1}$ \\\hline
+				\end{tabular}
+			\\
+			\\
+			\\
+			
+				\begin{tabular}{|c|c|c|c|}       \hline
+					\textit{T} & \textit{D} & \textit{F} & \textit{G}     \\\hline
+					~ & $d_{1}$ & $f_{2}$ & $g_{1}$ \\\hline
+					
+					~ & $d_{2}$ & $f_{2}$ & $g_{2}$ \\\hline
+					
+					~ & $d_{3}$ & $f_{1}$ & $g_{3}$ \\\hline
+				\end{tabular}
+			\end{minipage}			
+	}
+	\end{table}
+	\begin{enumerate}
+		\item[（1）] 求下列表达式的值：
+		\newline
+		$E_{1} = \Pi_{A, B}(\sigma_{A > 'a_{1}' \wedge B < 'b_{4}'}(R))$
+		\newline
+		$E_{2} = \Pi_{A, B, E, G}(\sigma_{A > 'a_{1}'\wedge E < 'e_{3}' \wedge G \neq 'g_{3}'}(R \bowtie S \bowtie T))$
+		\newline
+		$E_{3} = R \div \Pi_{D}(\sigma_{F = 'f_{1}'}(T))$
+		\newline
+		$E_{4} = \{t| (\exists u)(\exists v)(\exists w)(R(u) \wedge S(v) \wedge T(w) \wedge u[3] > 'c_{1}' \wedge v[2] \neq 'e_{2}' \wedge w[3] \neq 'g_{2}' \wedge u[4] = v[1] \wedge v[3] > w[2] \wedge t[1] = u[2] \wedge t[2] = u[3] \wedge t[3] = v[1] \wedge t[4] = w[3] \wedge t[5] = w[2])\}$
+		\item[（2）] 试将$E_{4}$转化为等价的关系代数表达式。
+	\end{enumerate}
+
+	\item[2.8] 试用关系代数表达式写出在Student，Course、SC关系上进行的下列查询：
+	\begin{enumerate}
+		\item[(1)] 查询“计算机07”班同学的学号及姓名；
+		\item[(2)] 学号为“01055107”的同学所选修的课程名称及成绩；
+		\item[(3)] 未选修编号为“CS-05”课程的学生学号；
+		\item[(4)] 选修了“张华”老师所开设课程的学生姓名、课程名称及成绩；
+		\item[(5)] 选修了全部课程的学生姓名及班级。
+	\end{enumerate}
+\end{itemize}
+
+\end{document}
