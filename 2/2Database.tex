@@ -1,6 +1,7 @@
 \documentclass[UTF8]{ctexart}
 \usepackage{graphicx}
 \usepackage{floatrow}
+\usepackage{amsmath}
 %opening
 \title{数据库系统原理 \\ 作业 2}
 \author{软件42 \\ 欧阳鹏程 \\ 2141601030}
@@ -11,11 +12,45 @@
 
 \begin{itemize}
 	\item[2.3] 为什么要对关系模型加以完整性规则的限制？关系模型的完整性约束具体包括哪些内容？
+	\paragraph{答：}完整性约束主要用于保证数据库中数据的正确性和相容性。关系模型的完整性约束包括：域完整性约束、实体完整性约束、参照完整性和用户定义完整性。
 	
 	\item[2.5] 试对笛卡儿积、$\theta$连接、等值连接、自然连接等关系运算进行比较。
+	\paragraph{答：}首先连接运算（$\theta$连接、等值连接、自然连接）都是建立在笛卡儿积运算之上的，比如$\theta$连接是对笛卡儿积做选择，而等值连接是$\theta$连接的一种特殊情况；自然连接是对笛卡儿积做投影。
+	
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			运算 & 公式 \\\hline
+			笛卡儿积 & $R \times S = \{t^{(m+n)}| t^{(m) \in R \wedge t^{(n) \in S}}\}$ \\\hline
+			
+			$\theta$连接 & $R \bowtie_{A \theta B} S = \{rs|r \in R \wedge s \in S \wedge r[A] \theta s[B]\} = \sigma_{A \theta B}(R \times S)$ \\\hline
+			
+			等值连接 & $R \bowtie_{A = B} S = \{rs|r \in R \wedge s \in S \wedge r[A] = s[B]\} = \sigma_{A = B}(R \times S)$ \\\hline
+			
+			自然连接 & $R \bowtie S = \Pi_{Attr(R) \cup (Attr(S) - A)}(\sigma_{R.A = S.A}(R \times S))$ \\\hline
+		\end{tabular}
+	\end{center}
 	
 	\item[2.6] 试将$\cup, -, \bowtie, \sigma, \Pi$等运算转换为等价的元组关系演算形式，为什么要对关系演算表达式加以安全性约束？
-	
+	\paragraph{答：}
+	\begin{itemize}
+		\item $R \cup S = \{t|R(t) \vee S(t)\}$
+		
+		\item $R - S = \{t|R(t) \wedge \neg S(t)\}$
+		
+		\item 设R是m元关系的元组，S是n元关系的元组，R和S有p列表头一致（R元组的$m^{'}$ $\sim$ $m^{'} + p$和S元组的$n^{'}$ $\sim$ $n^{'} + p$的表头一致）
+		\begin{equation}
+			\begin{split}
+				R \bowtie S  = & \{t^{(m+n-p)}|(\exists u^{(m)})(\exists v^{(n)})(R(u) \wedge S(v) \wedge \\ & \underbrace{u[m^{'}]=v[n^{'}] \wedge u[m^{'}+1] = v[n^{'}+1]\wedge \cdots \wedge u[m^{'}+p] = v[n^{'}+p]}_{p})
+				\\ & \wedge t[1]=u[1] \wedge t[2]=u[2] \wedge \cdots \wedge t[m]=u[m] \wedge
+				\\ & t[m^{'}+p+1]=v[n^{'}] \wedge \cdots t[m+n-p]=v[n]\}	
+			\end{split}
+		\end{equation}
+		
+		\item $ \sigma_{F}(R) = \{t|R(t) \wedge F^{'}\} $ \\ 其中$F^{'}$是选择条件F在元组关系演算中的等价表示。
+		
+		\item $\Pi_{i_{1},i_{2},\cdots,i_{k}}(R) = \{t^{(k)}|(\exists u)(R(u) \wedge t[1]=u[i_{1}] \wedge \cdots \wedge t[k]=u[i_{k}])\}$
+	\end{itemize}
 	\item[2.7] 
 	设有下列关系：
 	\begin{table}[H]
