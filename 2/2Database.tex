@@ -50,10 +50,12 @@
 		\item $ \sigma_{F}(R) = \{t|R(t) \wedge F^{'}\} $ \\ 其中$F^{'}$是选择条件F在元组关系演算中的等价表示。
 		
 		\item $\Pi_{i_{1},i_{2},\cdots,i_{k}}(R) = \{t^{(k)}|(\exists u)(R(u) \wedge t[1]=u[i_{1}] \wedge \cdots \wedge t[k]=u[i_{k}])\}$
+		
+		\item 因为在关系演算中，有可能会出现无限关系，进而出现无穷验证的问题；而无限关系和无穷验证在计算机中都是不允许出现的，所以为了保证运算的安全性需要采取安全性约束。
 	\end{itemize}
 	\item[2.7] 
 	设有下列关系：
-	\begin{table}[H]
+	\begin{table}
 		\ttabbox{\caption{\textit{R, S, T}关系}}{
 			\centering
 			\begin{minipage}{0.35\textwidth}
@@ -115,14 +117,65 @@
 	\begin{enumerate}
 		\item[（1）] 求下列表达式的值：
 		\newline
-		$E_{1} = \Pi_{A, B}(\sigma_{A > 'a_{1}' \wedge B < 'b_{4}'}(R))$
+		$E_{1} = \Pi_{C, D}(\sigma_{A > 'a_{1}' \wedge B < 'b_{4}'}(R))$
 		\newline
-		$E_{2} = \Pi_{A, B, E, G}(\sigma_{A > 'a_{1}'\wedge E < 'e_{3}' \wedge G \neq 'g_{3}'}(R \bowtie S \bowtie T))$
+		$E_{2} = \Pi_{A, B, E, G}(\sigma_{A < 'a_{3}'\wedge E < 'e_{3}' \wedge G \neq 'g_{3}'}(R \bowtie S \bowtie T))$
 		\newline
 		$E_{3} = R \div \Pi_{D}(\sigma_{F = 'f_{1}'}(T))$
 		\newline
 		$E_{4} = \{t| (\exists u)(\exists v)(\exists w)(R(u) \wedge S(v) \wedge T(w) \wedge u[3] > 'c_{1}' \wedge v[2] \neq 'e_{2}' \wedge w[3] \neq 'g_{2}' \wedge u[4] = v[1] \wedge v[3] > w[2] \wedge t[1] = u[2] \wedge t[2] = u[3] \wedge t[3] = v[1] \wedge t[4] = w[3] \wedge t[5] = w[2])\}$
 		\item[（2）] 试将$E_{4}$转化为等价的关系代数表达式。
+	\end{enumerate}
+	\paragraph{答：}
+	\begin{enumerate}
+		\item[(1)] $E_{1}$关系：
+		\begin{table}[H]
+			\caption{$R_{1}$}
+			\begin{tabular}{|c|c|}
+				\hline 
+				$C$ & $D$ \\\hline
+				
+				$c_{2}$ & $d_{1}$\\\hline	
+				
+				$c_{2}$ & $d_{2}$\\\hline	
+				
+				$c_{2}$ & $d_{3}$\\\hline	
+				
+				$c_{2}$ & $d_{1}$\\\hline	
+				
+				$c_{3}$ & $d_{2}$\\\hline	
+				
+				$c_{2}$ & $d_{1}$\\\hline	
+				
+				$c_{2}$ & $d_{3}$\\\hline	
+								
+				$c_{2}$ & $d_{2}$\\\hline					
+			\end{tabular}
+		\end{table}
+	
+		$E_{2}$关系：
+		\begin{table}[H]
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				A & B & E & G \\\hline
+				$a_{1}$ & $b_{1}$ & $e_{2}$ & $g_{1}$ \\\hline
+				$a_{2}$ & $b_{2}$ & $e_{2}$ & $g_{1}$ \\\hline
+				$a_{3}$ & $b_{2}$ & $e_{2}$ & $g_{1}$ \\\hline
+				$a_{1}$ & $b_{1}$ & $e_{1}$ & $g_{2}$ \\\hline
+				$a_{2}$ & $b_{3}$ & $e_{1}$ & $g_{2}$ \\\hline
+				$a_{3}$ & $b_{2}$ & $e_{1}$ & $g_{2}$ \\\hline
+			\end{tabular}
+		\end{table}
+	
+		$E_{3}$关系：
+		\begin{table}[H]
+			\begin{tabular}{|c|c|c|}
+				\hline
+				A & B & C \\\hline
+				$a_{4}$ & $b_{3}$ & $c_{2}$ \\\hline
+			\end{tabular}
+		\end{table}
+		
 	\end{enumerate}
 
 	\item[2.8] 试用关系代数表达式写出在Student，Course、SC关系上进行的下列查询：
@@ -132,6 +185,19 @@
 		\item[(3)] 未选修编号为“CS-05”课程的学生学号；
 		\item[(4)] 选修了“张华”老师所开设课程的学生姓名、课程名称及成绩；
 		\item[(5)] 选修了全部课程的学生姓名及班级。
+		
+		\paragraph{答：}
+		\begin{enumerate}
+			\item[(1)] $\Pi_{SNo, SName}(\sigma_{SClass='Computer 07'}(Student))$
+			
+			\item[(2)] $\Pi_{CName, Score}(\sigma_{SNo='01055107'}(SC) \bowtie Course)$
+			
+			\item[(3)] $\Pi_{SNo}(Student) - \Pi_{SNo}(\sigma_{CNo='CS-05'}(SC))$
+			
+			\item[(4)] $\Pi_{SName, CName, Score}(\sigma_{TName='ZhangHua'}(Course) \bowtie SC \bowtie Student)$
+			
+			\item[(5)] $\Pi_{SName, Class}(Student \bowtie (\Pi_{SNo, CNo} \div \Pi_{SNo}(Student)))$
+		\end{enumerate}
 	\end{enumerate}
 \end{itemize}
 
