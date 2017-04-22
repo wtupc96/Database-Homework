@@ -1,0 +1,2 @@
+\paragraph{答：}
+\textbf{DELETE FROM} Student \textbf{WHERE} S\# \textbf{IN} \textbf{(SELECT} S\# \textbf{FROM} SC \textbf{WHERE} Course.C\#=SC.C\# \textbf{GROUP BY} S\# \textbf{HAVING SUM(}Credit\textbf{)}>110)

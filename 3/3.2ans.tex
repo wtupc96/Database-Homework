@@ -1,0 +1,18 @@
+\paragraph{答：}
+\begin{enumerate}
+	\item \textbf{SELECT} S\#, Grade \textbf{FROM} SC \textbf{WHERE} C\#='CS-02'
+
+	\item \textbf{SELECT} Sname \textbf{FROM} Student \textbf{WHERE} Sex='女' AND S\# \textbf{IN} (\textbf{SELECT} S\# \textbf{FROM} SC \textbf{WHERE} C\#='EE-01')
+	
+	\item \textbf{SELECT} Sname \textbf{FROM} Student \textbf{WHERE} S\# \textbf{IN} (\textbf{SELECT} S\# \textbf{FROM} SC \textbf{WHERE} C\#<>'CS-02')
+	
+	\item \textbf{SELECT} S\#, Sname, \textbf{DATEDIFF('YEAR'}, Bdate, \textbf{GETDATE())} \textbf{FROM} Student \textbf{WHERE } Height>(\textbf{SELECT} Height \textbf{FROM} Student \textbf{WHERE UNIQUE} Sname='王涛') 
+	
+	\item \textbf{SELECT} S\# \textbf{FROM} SC \textbf{WHERE} C\#='CS-01' \textbf{GROUP BY} S\# \textbf{HAVING} Grade=\textbf{MAX(}Grade\textbf{)}
+	
+	\item \textbf{SELECT} Sname, Course.C\#, Credit, Grade \textbf{FROM} Student, Course, SC \textbf{WHERE} Student.S\#=SC.S\# \textbf{AND} Course.C\#=SC.C\#
+	
+	\item \textbf{SELECT} Sname, \textbf{AVG(}Grade\textbf{)} \textbf{FROM} Student \textbf{INNER JOIN} SC \textbf{USING} S\# \textbf{GROUP BY} S\# \textbf{HAVING AVG(}Grade>80\textbf())
+	
+	\item \textbf{SELECT} S\#, \textbf{SUM(}Credit) \textbf{FROM} SC, Course \textbf{WHERE} SC.C\#=Course.C\# \textbf{GROUP BY} S\# \textbf{HAVING COUNT(}C\#\textbf{)}>=3 \textbf{ORDER BY} S\# \textbf{ASC} 
+\end{enumerate}

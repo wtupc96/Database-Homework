@@ -1,0 +1,8 @@
+\paragraph{答：}
+\begin{enumerate}
+	\item \textbf{CREATE VIEW} S\_male \textbf{AS SELECT} S\#, Sname, Bdate, Height \textbf{FROM} Student \textbf{WHERE} Dorm='西18' \textbf{WITH CHECK OPTION}
+	
+	\item \textbf{CREATE VIEW} ZM\_course \textbf{AS SELECT} C\#, Cname, \textbf{AVG(}Grade\textbf{)} \textbf{FROM} Course, SC \textbf{WHERE} Course.C\#=SC.C\# \textbf{AND} Teacher='张明' \textbf{GROUP BY} C\# \textbf{WITH CHECK OPTION}
+	
+	\item \textbf{CREATE VIEW} RGZN \textbf{AS SELECT} Student.S\#, Sname, Grade \textbf{FROM} Student, SC \textbf{WHERE} Student.S\#=SC.S\# \textbf{AND} C\# \textbf{IN} (\textbf{SELECT} C\# \textbf{FROM} Course \textbf{WHERE} Cname='人工智能') \textbf{WITH CHECK OPTION}
+\end{enumerate}

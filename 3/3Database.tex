@@ -1,0 +1,47 @@
+\documentclass[]{ctexart}
+\usepackage{subfiles}
+
+%opening
+\title{数据库系统原理 \\ 作业 2}
+\author{软件42 \\ 欧阳鹏程 \\ 2141601030 \\ 版权声明：BY-NC-SA}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item[3.2] 在题1中定义的基本表上完成以下查询：
+	\begin{enumerate}
+		\item 查询选修课程“CS-02”的学生学号、成绩。
+		\item 查询选修课程“EE-01”的女学生姓名。
+		\item 查询不选修课程“CS-02”的学生姓名。
+		\item 查询身高高于“王涛”同学的男生学号、姓名及年龄。
+		\item 查询选修课程“CS-01”的学生中成绩最高的学生学号。
+		\item 查询学生姓名及其所选修课程的课程号、学号和成绩。
+		\item 查询平均成绩超过80分的学生姓名和平均成绩。
+		\item 查询选修三门及以上课程（包括三门）的学生已获得的学分数，并按学号进行升序排列。
+	\end{enumerate}
+	\subfile{3.2ans.tex}
+
+	\item[3.3] 分别在Student和Course表中加入记录（‘01032005’，‘刘静’，‘男’，‘1983-12-10’，1.75，‘西14舍312’）及（‘CS-03’，‘离散数学’，64，4，‘陈建明’）。
+	\subfile{3.3ans.tex}
+	
+	\item[3.4]
+	将Student表中已修学分数大于110的学生记录删除。
+	\subfile{3.4ans.tex}
+	
+	\item[3.5]
+	将“张明”老师负责的“信号与系统”课程的学时数调整为56，同时增加一个学分。
+	\subfile{3.5ans.tex}
+	
+	\item[3.7]
+	在题3.1定义的基本表上建立如下视图：
+	\begin{enumerate}
+		\item 所有居住在“西18”舍的男生视图，包括学号、姓名、出生日期、身高等属性。
+		\item “张明”老师所开设课程情况的视图，包括课程编号、课程名称、平均成绩等属性。
+		\item 所有选修了“人工智能”课程的学生视图，包括学号、姓名、成绩等属性。
+	\end{enumerate}
+	\subfile{3.7ans.tex}
+\end{enumerate}
+
+\end{document}
