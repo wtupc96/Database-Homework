@@ -1,0 +1,83 @@
+\documentclass[]{ctexart}
+\usepackage{subfiles}
+\usepackage{floatrow}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+
+%opening
+\title{数据库系统原理 \\ 作业 4}
+\author{软件42 \\ 欧阳鹏程 \\ 2141601030 \\ 版权声明：Creative Commons BY-NC-SA}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item[4.1] 试根据下图所示关系判断以下函数依赖是否在$r_{1}$和$r_{2}$上成立：$A \to B, C \to A, CB \to A$。
+	\begin{table}[H]
+		\centering
+		\caption{$r_{1}$}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			A & B & C \\\hline
+			$a_{1}$ & $b_{1}$ & $c_{1}$ \\
+			$a_{2}$ & $b_{1}$ & $c_{1}$ \\
+			$a_{3}$ & $b_{2}$ & $c_{3}$ \\
+			$a_{4}$ & $b_{4}$ & $c_{4}$ \\\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\centering
+		\caption{$r_{2}$}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			A & B & C \\\hline
+			$a_{1}$ & $b_{1}$ & $c_{1}$ \\
+			$a_{1}$ & $b_{1}$ & $c_{2}$ \\
+			$a_{2}$ & $b_{2}$ & $c_{2}$ \\
+			$a_{4}$ & $b_{4}$ & $c_{3}$ \\\hline
+		\end{tabular}
+	\end{table}
+
+	\item[4.3] 以下逻辑蕴涵是否成立？如果成立，请给予证明，否则请举出反例说明。
+	\begin{enumerate}
+		\item $\{AB \to C\} \vDash \{A \to C\}$
+		\item $\{A \to BC, C\to DE\} \vDash \{A \to BCDE\}$
+		\item $\{AB \to C, B \to C\} \vDash \{A \to C\}$
+	\end{enumerate}
+
+	\item[4.4] 关系模式R(A, B, C, D, E, G)上的函数依赖集合$F=\{A \to B, C \to G, E \to A, CE \to D\}$，试计算$(AG)^{+}$及$(CE)^{+}$。
+	
+	\item[4.5] 设有关系模式R(A, B, C, D, E, G, H)，R上的函数依赖集合$F=\{CD \to B, CDE \to A, A \to B, B \to E, G \to AEH, H \to EG\}$：
+	\begin{enumerate}
+		\item F是最小函数依赖集吗？如果不是，试求出F的最小覆盖；
+		\item 求R的所有候选键。
+	\end{enumerate}
+
+	\item[4.6] 设有关系模式R(A, B, C, D, E, G)及其函数依赖集合$F=\{B \to E, D \to G, A \to B, E \to A, DE \to C\}$，试判断R的一个分解$\rho=\{R_{1}(D, G), R_{2}(B, E), R_{3}(C, D, E), R_{4}(A, B)\}$是否是无损连接。
+	
+	\item[4.7] 设有关系模式R(A, B, C, D)及其函数依赖集合$F=\{C \to D, D \to A, C \to B, B \to A\}$：
+	\begin{enumerate}
+		\item 试判断R的一个分解$\rho=\{R_{1}(A, C), R_{2}(B, D), R_{3}(C, D)\}$是否是无损连接。
+		\item 计算F在$\rho$中每个子关系模式上的投影，分解$\rho$保持函数依赖吗？
+	\end{enumerate}
+
+	\item[4.9] 以下关系模式最高属于第几范式？请简单解释原因：
+	\begin{enumerate}
+		\item $R_{1}(A, B, C), F=\{C \to B, B \to A\}$
+		\item $R_{2}(A, B, C), F=\{B \to C, B \to A\}$
+		\item $R_{3}(A, B, C), F=\{B \to C, AC \to B\}$
+		\item $R_{4}(A, B, C, D), F=\{A \to C, B \to D\}$
+		\item $R_{5}(A, B, C, D), F=\{B \to D, AB \to C\}$
+	\end{enumerate}
+
+	\item[4.11] 设有关系模式R(A, B, C, D，E, G)及其函数依赖集合$F=\{B \to C, D \to E, BD \to A, E \to G\}$：
+	\begin{enumerate}
+		\item 将R分解为3NF，且既无损连接又保持函数连接；
+		\item 将R分解为BCNF，且保持无损连接。
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
