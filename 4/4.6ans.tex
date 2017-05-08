@@ -1,0 +1,28 @@
+\paragraph{解：}
+\begin{enumerate}
+	\item 初始符号表：
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			T & A & B & C & D & E & G \\\hline
+			$R_{1}$ & $b_{11}$ & $b_{12}$ & $b_{13}$ & $a_{4}$ & $b_{15}$ & $a_{6}$ \\
+			$R_{2}$ & $b_{21}$ & $a_{2}$ & $b_{23}$ & $b_{24}$ & $a_{5}$ & $b_{26}$ \\
+			$R_{3}$ & $b_{31}$ & $b_{32}$ & $a_{3}$ & $a_{4}$ & $a_{5}$ & $b_{36}$ \\
+			$R_{4}$ & $a_{1}$ & $a_{2}$ & $b_{43}$ & $b_{44}$ & $b_{45}$ & $b_{46}$ \\\hline
+		\end{tabular}
+	\end{table}
+	得到最终的符号表：
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			T & A & B & C & D & E & G \\\hline
+			$R_{1}$ & $b_{11}$ & $b_{12}$ & $b_{13}$ & $a_{4}$ & $b_{15}$ & $a_{6}$ \\
+			$R_{2}$ & $a_{1}$ & $a_{2}$ & $b_{23}$ & $b_{24}$ & $a_{5}$ & $b_{26}$ \\
+			\textbf{$R_{3}$} & \textbf{$a_{1}$} & \textbf{$a_{2}$} & \textbf{$a_{3}$} & \textbf{$a_{4}$} & \textbf{$a_{5}$} & \textbf{$a_{6}$} \\
+			$R_{4}$ & $a_{1}$ & $a_{2}$ & $b_{43}$ & $b_{44}$ & $a_{5}$ & $b_{46}$ \\\hline
+		\end{tabular}
+	\end{table}
+	得到一个全a行，故原分解为无损连接。
+\end{enumerate}

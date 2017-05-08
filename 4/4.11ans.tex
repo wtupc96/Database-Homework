@@ -1,0 +1,42 @@
+\paragraph{解：}
+\begin{enumerate}
+	\item 
+	\begin{itemize}
+		\item 先求最小覆盖F: \\
+		\begin{itemize}
+			\item 假设$B \to C$是多余的函数依赖，去掉$B \to C$得到$F_{1}=\{D \to E, BD \to A, E \to G\}$\\
+			计算$(B)^{+}_{F_{1}}=\{B\}$，而$C \notin (B)^{+}_{F_{1}}$ \\
+			所以$B \to C$不是多余的依赖关系，不能去掉。
+			
+			\item 假设$D \to E$是多余的函数依赖，去掉$B \to C$得到$F_{2}=\{B \to C, BD \to A, E \to G\}$\\
+			计算$(D)^{+}_{F_{2}}=\{D\}$，而$E \notin (D)^{+}_{F_{2}}$ \\
+			所以$D \to E$不是多余的依赖关系，不能去掉。
+			
+			\item 假设$BD \to A$是多余的函数依赖，去掉$B \to C$得到$F_{3}=\{B \to C, D \to E, E \to G\}$\\
+			计算$(BD)^{+}_{F_{3}}=\{B, D, C, E, G\}$，而$C \notin (BD)^{+}_{F_{3}}$ \\
+			所以$BD \to A$不是多余的依赖关系，不能去掉。	
+		\end{itemize}
+		同理，$E \to G$也不是多余的函数依赖。\\
+		故最小覆盖$F=\{B \to C, D \to E, BD \to A, E \to G\}$。
+		
+		\item 求候选键：\\
+		$C_{1}=\emptyset, C_{2}=\{B, D\}, C_{3}=\{C, A, G\}, C_{4}=\{E\}$ \\
+		而$(C_{1} \cup C_{2})^{+}=U$，故\{B, D\}为唯一的候选键。
+		
+		\item 由于函数依赖没有公共的决定子，所以分得新的关系模式为:\\
+		$\rho=\{R_{1}(B, C), R_{2}(D, E), R_{3}(B, D, A), R_{4}(E, G)\}$
+		
+		\item 观察可得由候选键构成的关系模式$R_{ck}$已经包含于$R_{3}$，所以$\rho$已经是分解完成的第三范式。
+	\end{itemize}
+
+	\item 
+	\begin{itemize}
+		\item R上的候选键是\{B, D\}，而R上的依赖关系$B \to C, D \to E, E \to G$都不满足BCNF的要求；
+		\item 首先选择$B \to C$作为分解对象，将R分解为$R_{1}(B, C)$和$R_{2}(A, B, D, E, G)$；
+		\item 分解$R_{2}$：$R_{2}$上的候选键是\{B, D\}，而$R_{2}$上的依赖关系$D \to E, E \to G$都不满足BCNF的要求；
+		\item 分解$R_{2}$为：$R_{2}(D, E)$和$R_{3}(A, B, D, E, G)$；
+		\item 分解$R_{3}$，$R_{3}$上的候选键是\{B, D, E\}，而R上的依赖关系$BD \to A, E \to G$都不满足BCNF的要求；
+		\item 分解$R_{3}$为：$R_{3}(B, D, A)$和$R_{4}(E, G)$；
+		\item 至此，所有关系都满足BCNF，分解完毕。
+	\end{itemize}
+\end{enumerate}

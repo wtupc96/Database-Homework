@@ -1,0 +1,83 @@
+\paragraph{解：}
+\begin{enumerate}
+	\item 
+	不是最小函数依赖集。\\
+	现求最小函数依赖集：\\
+	首先将F分解为所有的函数依赖变成右边都是单个属性的函数依赖：$
+	F=\{CD \to B, CDE \to A, A \to B, B \to E, G \to A, G \to E, G \to H, H \to E, H \to G\}$\\
+	去掉F中多余的函数依赖：
+	\begin{itemize}
+		\item 
+		假设$CD \to B$是多余的函数依赖，去掉$CD \to B$得到$F_{1}=\{CDE \to A, A \to B, B \to E, G \to A, G \to E, G \to H, H \to E, H \to G\}$\\
+		计算$(CD)^{+}_{F_{1}}=\{C, D\}$，而$B \notin (CD)^{+}_{F_{1}}$ \\
+		所以$CD \to B$不是多余的依赖关系，不能去掉。
+		
+		\item 
+		假设$CDE \to A$是多余的函数依赖，去掉$CDE \to A$得到$F_{2}=\{CD \to B, A \to B, B \to E, G \to A, G \to E, G \to H, H \to E, H \to G\}$\\
+		计算$(CDE)^{+}_{F_{2}}=\{C, D, E, B\}$，而$A \notin (CDE)^{+}_{F_{2}}$ \\
+		所以$CDE \to A$不是多余的依赖关系，不能去掉。
+		
+		\item 
+		假设$A \to B$是多余的函数依赖，去掉$A \to B$得到$F_{3}=\{CD \to B, CDE \to A, B \to E, G \to A, G \to E, G \to H, H \to E, H \to G\}$\\
+		计算$(A)^{+}_{F_{3}}=\{A\}$，而$B \notin (A)^{+}_{F_{3}}$ \\
+		所以$A \to B$不是多余的依赖关系，不能去掉。
+		
+		\item 
+		假设$B \to E$是多余的函数依赖，去掉$B \to E$得到$F_{4}=\{CD \to B, CDE \to A, A \to B, G \to A, G \to E, G \to H, H \to E, H \to G\}$\\
+		计算$(B)^{+}_{F_{4}}=\{B\}$，而$E \notin (CD)^{+}_{F_{4}}$ \\
+		所以$CD \to B$不是多余的依赖关系，不能去掉。
+		
+		\item 
+		假设$G \to A$是多余的函数依赖，去掉$G \to A$得到$F_{5}=\{CD \to B, CDE \to A, A \to B, B \to E, G \to E, G \to H, H \to E, H \to G\}$\\
+		计算$(G)^{+}_{F_{5}}=\{G, E, H\}$，而$A \notin (G)^{+}_{F_{5}}$ \\
+		所以$G \to A$不是多余的依赖关系，不能去掉。
+		
+		\item 
+		\textbf{假设$G \to E$是多余的函数依赖，去掉$G \to E$得到$F_{6}=\{CD \to B, CDE \to A, A \to B, B \to E, G \to A, G \to H, H \to E, H \to G\}$\\
+		计算$(G)^{+}_{F_{5}}=\{G, A, H, E, B\}$，而$E \in (G)^{+}_{F_{6}}$ \\
+		所以$G \to E$是多余的依赖关系，将其去掉。}
+		
+		\item 
+		假设$G \to H$是多余的函数依赖，去掉$G \to H$得到$F_{7}=\{CD \to B, CDE \to A, A \to B, B \to E, G \to A, G \to E, H \to E, H \to G\}$\\
+		计算$(G)^{+}_{F_{7}}=\{G, A, E, B\}$，而$H \notin (G)^{+}_{F_{7}}$ \\
+		所以$G \to H$不是多余的依赖关系，不能去掉。
+		
+		\item 
+		\textbf{假设$H \to E$是多余的函数依赖，去掉$H \to E$得到$F_{8}=\{CD \to B, CDE \to A, A \to B, B \to E, G \to A, G \to E, G \to H, H \to G\}$\\
+		计算$(H)^{+}_{F_{8}}=\{H, G, A, E, B\}$，而$E \in (H)^{+}_{F_{8}}$ \\
+		所以$H \to E$是多余的依赖关系，将其去掉。}
+		
+		\item 
+		假设$H \to G$是多余的函数依赖，去掉$H \to G$得到$F_{9}=\{CD \to B, CDE \to A, A \to B, B \to E, G \to A, G \to E, G \to H, H \to E\}$\\
+		计算$(H)^{+}_{F_{9}}=\{H, E\}$，而$G \notin (H)^{+}_{F_{9}}$ \\
+		所以$CD \to B$不是多余的依赖关系，不能去掉。
+	\end{itemize}
+	得到F的最小覆盖为：\\
+	$F'=\{CD \to B, CDE \to A, A \to B, B \to E, G \to A, G \to H, H \to G\}$
+	
+	\item 
+	求得:
+	\begin{align*}
+		(CD)^{+}_{F'} &= \{C, D, B, E\} \\
+		(CDE)^{+}_{F'} &= \{C, D, E, A, B\} \\
+		(A)^{+}_{F'} &= \{A, B, E\} \\
+		(B)^{+}_{F'} &= \{B, E\} \\
+		(G)^{+}_{F'} &= \{G, A, H, B, E\} \\
+		(H)^{+}_{F'} &= \{H, G\}
+	\end{align*}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			~ & A & B & C & D & E & G & H \\\hline
+			CD & & $\surd$ & $\surd$ & $\surd$ & $\surd$ & & \\
+			CDE & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & & \\
+			A & $\surd$ & $\surd$ & & & $\surd$ & & \\
+			B & & $\surd$ & & & $\surd$ & & \\
+			G & $\surd$ & $\surd$ & & & $\surd$ & $\surd$ & $\surd$ \\
+			H & & & & & & $\surd$ & $\surd$ \\\hline
+		\end{tabular}
+	\end{table}
+	可以看出如果要包含\{A\}则必须包含\textbf{\{CDE, A, G\}}，要包含\{B, E\}必须包含\textbf{\{CD, CDE, A, B, G\}}，要包含\{C, D\}必须包含\textbf{\{CD, CDE\}}，要包含\{G, H\}必须包含\textbf{\{G, H\}}。\\
+	得所有候选键为$\{\{C, D, G\}, \{C, D, E, H\}, \{C, D, A, H\}, \{C, D, E, H\}, \{C, D, E, G\}\}$
+\end{enumerate}

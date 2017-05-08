@@ -1,0 +1,28 @@
+\paragraph{解：}
+\begin{enumerate}
+	\item 初始符号表：
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			T & A & B & C & D \\\hline
+			$R_{1}$ & $a_{1}$ & $b_{12}$ & $a_{3}$ & $b_{14}$ \\
+			$R_{2}$ & $b_{21}$ & $a_{2}$ & $b_{23}$ & $a_{4}$ \\
+			$R_{3}$ & $b_{31}$ & $b_{32}$ & $a_{3}$ & $a_{4}$ \\\hline
+		\end{tabular}
+	\end{table}
+	最终符号表为：
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			T & A & B & C & D \\\hline
+			$R_{1}$ & $a_{1}$ & $b_{12}$ & $a_{3}$ & $a_{4}$ \\
+			$R_{2}$ & $a_{1}$ & $a_{2}$ & $b_{23}$ & $a_{4}$ \\
+			$R_{3}$ & $a_{1}$ & $b_{12}$ & $a_{3}$ & $a_{4}$ \\\hline
+		\end{tabular}
+	\end{table}
+	没有全a行，故该分解不是无损连接。
+	
+	\item $F_{1}=\{C \to A\}, F_{2}=\emptyset, F_{3}=\{C \to D\}$, \\ 令$G=\cup_{i=1}^{3}F_{i}=\{C \to A, C \to D\}$，得$X_{G}^{+}=\{A, D\}$，而$B \notin X_{G}^{+}$，故分解$\rho$不保持函数依赖。
+\end{enumerate}
