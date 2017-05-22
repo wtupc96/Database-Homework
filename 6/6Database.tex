@@ -1,0 +1,50 @@
+\documentclass[]{ctexart}
+\usepackage{subfiles}
+\usepackage{floatrow}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+
+%opening
+\title{数据库系统原理 \\ 作业 6}
+\author{软件42 \\ 欧阳鹏程 \\ 2141601030 \\ 版权声明：Creative Commons BY-NC-SA}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item[7.3] 在例7-1中查询语句为：找出选修李明老师所教课程并且成绩为优的女生学号和姓名。
+	\begin{enumerate}
+		\item 试写出该查询相应的关系代数表达式。
+		\item 画出表达式的语法树并对其进行优化。
+	\end{enumerate}
+	\subfile{7.3ans.tex}
+
+	\item[7.4] 在例7-1中，关系Course在Cname属性上有有序索引，Teacher属性上有无序索引。实现下列选择运算的较优化方法是什么？
+	\begin{enumerate}
+		\item $\sigma_{Teacher='\text{李明}'}(E)$
+		\item $\sigma_{Cname='\text{数据库系统}' and Teacher='\text{李明}'}(E)$
+		\item $\sigma_{Cname='\text{数据库系统}' or Teacher='\text{李明}'}(E)$
+	\end{enumerate}
+	\subfile{7.4ans.tex}
+
+	\item[7.5] 在习题7.3中，关系Course有20000个元组，块因子为20；关系SC有400个元组，块因子为10；假设内存被划分为6块，关系Course和SC的连接属性有序存储。对于$Course \bowtie SC$运算，试分析下列两种方法所需访问的物理块数。
+	\begin{enumerate}
+		\item 用嵌套循环连接算法。
+		\item 用排序归并连接算法。
+	\end{enumerate}
+	\subfile{7.5ans.tex}
+\end{enumerate}
+
+\end{document}

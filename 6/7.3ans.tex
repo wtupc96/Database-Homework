@@ -1,0 +1,75 @@
+\paragraph{答：}
+\begin{enumerate}
+	\item 
+	$\Pi_{S\#, Sname}(\sigma_{Teacher='\text{李明}' and Sex='\text{女}' and Grade='\text{优}'}(Student \bowtie Course \bowtie SC))$
+	\item 得到最初的表达式语法树：
+	\begin{center}
+		\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+		{
+			\begin{pspicture}(0,-3.77)(6.455,3.77)
+			\rput[b](4.61,3.43){$\Pi_{S\#, Sname}$}
+			\rput[b](4.61,1.83){$\sigma_{C}$}
+			\rput[b](0.61,-3.77){$Student$}
+			\rput[b](4.21,-3.77){$Course$}
+			\rput[b](6.21,-1.77){$SC$}
+			\rput[b](2.61,-1.77){$\bowtie$}
+			\rput[b](4.61,-0.17){$\bowtie$}
+			\psline[linecolor=black, linewidth=0.02](0.61,-3.37)(2.61,-1.77)
+			\psline[linecolor=black, linewidth=0.02](4.21,-3.37)(2.61,-1.77)
+			\psline[linecolor=black, linewidth=0.02](3.01,-1.37)(4.61,-0.17)
+			\psline[linecolor=black, linewidth=0.02](6.21,-1.37)(4.61,-0.17)
+			\psline[linecolor=black, linewidth=0.02](4.61,0.23)(4.61,1.83)
+			\psline[linecolor=black, linewidth=0.02](4.61,2.23)(4.61,3.43)
+			\end{pspicture}
+		}
+	\end{center}
+	其中$C=Teacher='\text{李明}' and Sex='\text{女}' and Grade='\text{优}'$ \\
+	根据规则(1)，将选择操作下推，得到：
+	\begin{center}
+		\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+		{
+			\begin{pspicture}(0,-3.37)(7.255,3.37)
+			\rput[b](5.41,3.03){$\Pi_{S\#, Sname}$}
+			\rput[b](0.61,-3.37){$Student$}
+			\rput[b](5.81,-3.37){$Course$}
+			\rput[b](7.01,-0.57){$SC$}
+			\rput[b](3.41,-0.57){$\bowtie$}
+			\rput[b](5.41,1.43){$\bowtie$}
+			\psline[linecolor=black, linewidth=0.02](1.01,-2.97)(3.41,-0.57)
+			\psline[linecolor=black, linewidth=0.02](5.81,-2.97)(3.41,-0.57)
+			\psline[linecolor=black, linewidth=0.02](3.81,-0.17)(5.41,1.43)
+			\psline[linecolor=black, linewidth=0.02](7.01,-0.17)(5.41,1.43)
+			\psline[linecolor=black, linewidth=0.02](5.41,1.83)(5.41,3.03)
+			\rput[bl](3.81,-1.77){$\sigma_{Teacher='Liming'}$}
+			\rput[bl](1.41,-1.77){ $\sigma_{Sex='nv'}$}
+			\rput[bl](5.41,0.23){ $\sigma_{Grade='you'}$}
+			\end{pspicture}
+		}
+	\end{center}
+	将投影操作向下推，得到：
+	\begin{center}
+		\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+		{
+			\begin{pspicture}(0,-3.37)(8.02,3.37)
+			\rput[b](5.41,3.03){$\Pi_{S\#, Sname}$}
+			\rput[b](0.61,-3.37){$Student$}
+			\rput[b](5.81,-3.37){$Course$}
+			\rput[b](7.41,-0.97){$SC$}
+			\rput[b](3.41,-0.57){$\bowtie$}
+			\rput[b](5.41,1.43){$\bowtie$}
+			\psline[linecolor=black, linewidth=0.02](1.01,-2.97)(3.41,-0.57)
+			\psline[linecolor=black, linewidth=0.02](5.81,-2.97)(3.41,-0.57)
+			\psline[linecolor=black, linewidth=0.02](3.81,-0.17)(5.41,1.43)
+			\psline[linecolor=black, linewidth=0.02](7.41,-0.57)(5.41,1.43)
+			\psline[linecolor=black, linewidth=0.02](5.41,1.83)(5.41,3.03)
+			\rput[bl](4.21,-2.57){$\sigma_{Teacher='Liming'}$}
+			\rput[bl](0.61,-2.57){ $\sigma_{Sex='nv'}$}
+			\rput[bl](6.21,-0.17){ $\sigma_{Grade='you'}$}
+			\rput[bl](1.41,-1.77){$\Pi_{S\#, Sname}$}
+			\rput[bl](3.81,-1.77){$\Pi_{S\#, C\#}$}
+			\rput[bl](5.81,0.63){$\Pi_{C\#}$}
+			\end{pspicture}
+		}
+	\end{center}
+	即为所求。
+\end{enumerate}
