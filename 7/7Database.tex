@@ -1,0 +1,41 @@
+\documentclass[]{ctexart}
+
+%opening
+\title{数据库系统原理 \\ 作业 7}
+\author{软件42 \\ 欧阳鹏程 \\ 2141601030 \\ 版权声明：Creative Commons BY-NC-SA}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item[8.2] 在数据库系统实现中，有很多处理都可以看成由一个事务来实现。结合实际生活，试举一些例子。 
+
+	\newpage
+	\item[8.6] 数据转储的作用是什么？简单比较各种数据转储方式，并描述其适用的场合。
+
+	\vspace{10cm}
+	\item[8.9] 解释引入检查点方法的目的，并给出使用此方法进行恢复的步骤。
+	
+	\newpage
+	\item[8.13] 比较串行调度和可串行调度，试举例说明二者有什么异同点。
+	
+	\vspace{10cm}
+	\item[8.20] 死锁是什么？讨论预防与检测死锁的方法，并说明当发生死锁后如何恢复。
+	
+	\newpage
+	\item[8.21] 有两个事务：\\
+	$T_{1}$：时间标记为20 \\
+	$T_{2}$：时间标记为30 \\
+	如果对$T_{1}$，$T_{2}$对数据对象$R_{1}$，$R_{2}$按以下次序申请锁：\\
+	$T_{1} Xlock R_{1}, T_{2} Xlock R_{2}, T_{1} Xlock R_{2}, T_{2} Xlock R_{1}$ \\
+	请说明$T_{1}, T_{2}$在下列情况下的执行过程：
+	\begin{enumerate}
+		\item 一般的两段封锁。
+		\item 具有wait-die策略的两段封锁。
+		\item 具有wound-wait策略的两段封锁。
+	\end{enumerate}
+	如果$T_{1}, T_{2}$可以执行，则上述三种情况的等效串行执行次序如何？
+\end{enumerate}
+
+\end{document}
